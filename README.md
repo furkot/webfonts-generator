@@ -1,7 +1,7 @@
 # webfonts-generator
 
 
-[![Build Status](https://travis-ci.org/sunflowerdeath/webfonts-generator.svg?branch=master)](https://travis-ci.org/sunflowerdeath/webfonts-generator)
+[![Build Status](https://travis-ci.org/darthsoup/webfonts-generator.svg?branch=master)](https://travis-ci.org/darthsoup/webfonts-generator)
 
 Generator of webfonts from SVG icons.
 
@@ -15,6 +15,8 @@ Features:
 
 ```
 npm install --save-dev webfonts-generator
+# or
+yarn add --dev webfonts-generator
 ```
 
 ## Usage
