@@ -1,6 +1,6 @@
 {
-  "name": "webfonts-generator",
-  "version": "0.4.0",
+  "name": "@darthsoup/webfonts-generator",
+  "version": "0.5.0",
   "description": "Generator of webfonts from svg icons",
   "main": "src/index.js",
   "directories": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sunflowerdeath/webfonts-generator.git"
+    "url": "https://github.com/darthsoup/webfonts-generator.git"
   },
   "keywords": [
     "font",
@@ -24,24 +24,24 @@
   "author": "sunflowerdeath",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/sunflowerdeath/webfonts-generator/issues"
+    "url": "https://github.com/darthsoup/webfonts-generator/issues"
   },
   "dependencies": {
-    "handlebars": "^4.0.5",
+    "handlebars": "^4.0.11",
     "mkdirp": "^0.5.0",
+    "lodash": "^4.17.10",
     "q": "^1.1.2",
-    "svg2ttf": "^4.0.0",
-    "svgicons2svgfont": "^5.0.0",
+    "svg2ttf": "^4.1.0",
+    "svgicons2svgfont": "^9.0.0",
     "ttf2eot": "^2.0.0",
     "ttf2woff": "^2.0.1",
     "ttf2woff2": "^2.0.3",
-    "underscore": "^1.7.0",
-    "url-join": "^1.1.0"
+    "url-join": "^4.0.0"
   },
   "devDependencies": {
-    "file-type": "^3.9.0",
-    "mocha": "^3.1.2",
-    "node-sass": "^3.4.2",
-    "read-chunk": "^2.0.0"
+    "file-type": "^9.0.0",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.9.3",
+    "read-chunk": "^2.1.0"
   }
 }

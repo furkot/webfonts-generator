@@ -1,7 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 var mkdirp = require('mkdirp')
-var _ = require('underscore')
+var _ = require('lodash')
 
 var generateFonts = require('./generateFonts')
 var renderCss = require('./renderCss')
@@ -81,7 +81,7 @@ var webfont = function(options, done) {
 	var currentCodepoint = options.startCodepoint
 	var codepointsValues = _.values(options.codepoints)
 	function getNextCodepoint() {
-		while (_.contains(codepointsValues, currentCodepoint)) {
+		while (_.includes(codepointsValues, currentCodepoint)) {
 			currentCodepoint++
 		}
 		var res = currentCodepoint

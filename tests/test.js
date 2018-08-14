@@ -1,6 +1,6 @@
 var fs = require('fs')
 var path = require('path')
-var _ = require('underscore')
+var _ = require('lodash')
 var assert = require('assert')
 
 var sass = require('node-sass')
@@ -48,7 +48,7 @@ describe('webfont', function() {
 				assert(fs.statSync(filepath).size > 0, type + ' file is not empty')
 
 				var DETECTABLE = ['ttf', 'woff', 'woff2', 'eot']
-				if (_.contains(DETECTABLE, type)) {
+				if (_.includes(DETECTABLE, type)) {
 					var chunk = readChunk.sync(filepath, 0, 262)
 					var filetype = getFileType(chunk)
 					assert.equal(type, filetype && filetype.ext, 'ttf filetype is correct')

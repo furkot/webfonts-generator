@@ -1,7 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 var crypto = require('crypto')
-var _ = require('underscore')
+var _ = require('lodash')
 var handlebars = require('handlebars')
 var urlJoin = require('url-join')
 
@@ -22,7 +22,7 @@ var makeUrls = function(options) {
 		var fontName = options.fontName + '.' + type + '?' + hash
 		return baseUrl ? urlJoin(baseUrl, fontName) : fontName
 	})
-	return _.object(options.types, urls)
+	return _.zipObject(options.types, urls)
 }
 
 
@@ -52,7 +52,7 @@ var makeSrc = function(options, urls) {
 
 var makeCtx = function(options, urls) {
 	// Transform codepoints to hex strings
-	var codepoints = _.object(_.map(options.codepoints, function(codepoint, name) {
+	var codepoints = _.fromPairs(_.map(options.codepoints, function(codepoint, name) {
 		return [name, codepoint.toString(16)]
 	}))
 

@@ -1,6 +1,6 @@
 var fs = require('fs')
 var path = require('path')
-var _ = require('underscore')
+var _ = require('lodash')
 var handlebars = require('handlebars')
 
 var renderCss = require('./renderCss')
