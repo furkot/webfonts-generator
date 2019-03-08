@@ -1,7 +1,7 @@
 # webfonts-generator
 
 
-[![Build Status](https://travis-ci.org/darthsoup/webfonts-generator.svg?branch=master)](https://travis-ci.org/darthsoup/webfonts-generator)
+[![Build Status](https://travis-ci.org/darthsoup/webfonts-generator.svg?branch=master)](https://travis-ci.org/darthsoup/webfonts-generator) [![Greenkeeper badge](https://badges.greenkeeper.io/darthsoup/webfonts-generator.svg)](https://greenkeeper.io/)
 
 Generator of webfonts from SVG icons.
 
