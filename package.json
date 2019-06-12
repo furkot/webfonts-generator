@@ -39,7 +39,7 @@
     "url-join": "^4.0.0"
   },
   "devDependencies": {
-    "file-type": "^11.0.0",
+    "file-type": "^12.0.0",
     "mocha": "^6.0.2",
     "node-sass": "^4.9.3",
     "read-chunk": "^3.1.0"
