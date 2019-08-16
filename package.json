@@ -27,9 +27,9 @@
     "url": "https://github.com/darthsoup/webfonts-generator/issues"
   },
   "dependencies": {
-    "handlebars": "^4.0.11",
+    "handlebars": "^4.1.2",
+    "lodash": "^4.17.15",
     "mkdirp": "^0.5.0",
-    "lodash": "^4.17.10",
     "q": "^1.1.2",
     "svg2ttf": "^4.1.0",
     "svgicons2svgfont": "^9.0.0",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "file-type": "^12.0.0",
-    "mocha": "^6.0.2",
+    "mocha": "^6.2.0",
     "node-sass": "^4.9.3",
     "read-chunk": "^3.1.0"
   }
