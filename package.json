@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "file-type": "^12.1.0",
-    "mocha": "^6.2.0",
+    "mocha": "^7.0.1",
     "node-sass": "^4.12.0",
     "read-chunk": "^3.2.0"
   }
