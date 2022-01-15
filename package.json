@@ -25,16 +25,16 @@
     "lodash": "^4.17.20",
     "mkdirp": "^1.0.0",
     "q": "^1.1.2",
-    "svg2ttf": "^5.0.0",
-    "svgicons2svgfont": "^9.1.1",
-    "ttf2eot": "^2.0.0",
-    "ttf2woff": "^2.0.1",
-    "ttf2woff2": "^3.0.0",
+    "svg2ttf": "^6.0.3",
+    "svgicons2svgfont": "^10.0.5",
+    "ttf2eot": "^3.0.0",
+    "ttf2woff": "^3.0.0",
+    "ttf2woff2": "^4.0.4",
     "url-join": "^4.0.1"
   },
   "devDependencies": {
-    "file-type": "^12.1.0",
-    "mocha": "^7.0.1",
-    "read-chunk": "^3.2.0"
+    "file-type": "~12",
+    "mocha": "~9",
+    "read-chunk": "~3"
   }
 }
