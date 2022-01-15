@@ -1,13 +1,21 @@
 {
-	"indent": 2,
-	"asi": true,
-	"quotmark": "single",
-	"camelcase": true,
-	"noarg": true,
-	"undef": true,
-	"unused": true,
-	"maxlen": 100,
-	"node": true,
+  "esversion": 11,
+
+  "bitwise": true,
+  "eqeqeq": true,
+  "forin": true,
+  "latedef": "nofunc",
+  "loopfunc": false,
+  "noarg": true,
+  "nonbsp": true,
+  "nonew": true,
+  "notypeof": true,
   "sub": true,
-	"shadow": true
+  "undef": true,
+  "unused": true,
+
+  "laxbreak": true,
+
+  "node": true,
+  "mocha": true
 }
