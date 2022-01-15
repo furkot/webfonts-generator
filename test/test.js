@@ -16,7 +16,7 @@ describe('webfont', function() {
 		return path.join(SRC, file)
 	})
 
-	var TYPES = ['ttf', 'woff', 'woff2', 'eot', 'svg']
+	var TYPES = ['ttf', 'woff', 'woff2', 'svg']
 	var FONT_NAME = 'fontName'
 
 	var OPTIONS = {
@@ -45,7 +45,7 @@ describe('webfont', function() {
 				assert(destFiles.indexOf(filename) !== -1, type + ' file exists')
 				assert(fs.statSync(filepath).size > 0, type + ' file is not empty')
 
-				var DETECTABLE = ['ttf', 'woff', 'woff2', 'eot']
+				var DETECTABLE = ['ttf', 'woff', 'woff2']
 				if (_.includes(DETECTABLE, type)) {
 					var chunk = readChunk.sync(filepath, 0, 262)
 					var filetype = getFileType(chunk)
@@ -77,7 +77,7 @@ describe('webfont', function() {
 
 	it('function generateCss can change urls', function() {
 		webfontsGenerator(OPTIONS, function(err, result) {
-			var urls = {svg: 'AAA', ttf: 'BBB', woff: 'CCC', eot: 'DDD'}
+			var urls = {svg: 'AAA', ttf: 'BBB', woff: 'CCC'}
 			var css = result.generateCss(urls)
 			assert(css.indexOf('AAA') !== -1)
 		})

@@ -25,8 +25,8 @@ var DEFAULT_OPTIONS = {
 	cssTemplate: TEMPLATES.css,
 	html: false,
 	htmlTemplate: TEMPLATES.html,
-	types: ['eot', 'woff', 'woff2'],
-	order: ['eot', 'woff2', 'woff', 'ttf', 'svg'],
+	types: ['woff', 'woff2'],
+	order: ['woff2', 'woff', 'ttf', 'svg'],
 	rename: function(file) {
 		return path.basename(file, path.extname(file))
 	},

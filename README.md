@@ -7,8 +7,7 @@ Generator of webfonts from SVG icons.
 
 Features:
 
-* Supported font formats: WOFF2, WOFF, EOT, TTF and SVG.
-* Supported browsers: IE8+.
+* Supported font formats: WOFF2, WOFF, TTF and SVG.
 * Generates CSS files and HTML preview, allows to use custom templates.
 
 ## Install
@@ -185,16 +184,16 @@ Default options are:
 
 Type: `array<string>`
 <br>
-Default: `['woff2', 'woff', 'eot']`
+Default: `['woff2', 'woff's]`
 
 Font file types to generate.
-Possible values: `svg, ttf, woff, woff2, eot`.
+Possible values: `svg, ttf, woff, woff2`.
 
 ### order
 
 Type: `array<string>`
 <br>
-Default: `['eot', 'woff2', 'woff', 'ttf', 'svg']`
+Default: `['woff2', 'woff', 'ttf', 'svg']`
 
 Order of `src` values in `font-face` in CSS file.
 
@@ -237,7 +236,6 @@ format and matching generator:
 - `ttf` - [svg2ttf](https://github.com/fontello/svg2ttf).
 - `woff2` - [ttf2woff2](https://github.com/nfroidure/ttf2woff2).
 - `woff` - [ttf2woff](https://github.com/fontello/ttf2woff).
-- `eot` - [ttf2eot](https://github.com/fontello/ttf2eot).
 
 ```js
 webfontsGenerator({
@@ -268,7 +266,7 @@ webfontsGenerator({
   // options
   writeFiles: false
 }, function(error, result) {
-  // result.eot, result.ttf, etc - generated fonts
+  // result.woff, result.ttf, etc - generated fonts
   // result.generateCss(urls) - function to generate css
 })
 ```
