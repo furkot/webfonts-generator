@@ -1,6 +1,5 @@
 var fs = require('fs')
 var path = require('path')
-var mkdirp = require('mkdirp')
 var _ = require('lodash')
 
 var generateFonts = require('./lib/generateFonts')
@@ -109,7 +108,7 @@ var webfont = function(options, done) {
 }
 
 function writeFile(content, dest) {
-	mkdirp.sync(path.dirname(dest))
+	fs.mkdirSync(path.dirname(dest), { recursive: true })
 	fs.writeFileSync(dest, content)
 }
 

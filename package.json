@@ -19,7 +19,6 @@
   "dependencies": {
     "handlebars": "^4.1.2",
     "lodash": "^4.17.20",
-    "mkdirp": "^1.0.0",
     "q": "^1.1.2",
     "svg2ttf": "^6.0.3",
     "svgicons2svgfont": "^10.0.5",
