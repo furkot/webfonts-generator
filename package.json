@@ -2,12 +2,8 @@
   "name": "@furkot/webfonts-generator",
   "version": "0.0.0",
   "description": "Generator of webfonts from svg icons",
-  "main": "src/index.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
-    "test": "mocha tests"
+    "test": "make check"
   },
   "repository": "furkot/webfonts-generator",
   "keywords": [
@@ -34,7 +30,13 @@
   },
   "devDependencies": {
     "file-type": "~12",
+    "jshint": "~2",
     "mocha": "~9",
     "read-chunk": "~3"
-  }
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "templates"
+  ]
 }

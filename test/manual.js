@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var _ = require('lodash')
 
-var webfontsGenerator = require('../src/index')
+var webfontsGenerator = require('..')
 
 var SRC = path.join(__dirname, 'src')
 var FILES = _.map(fs.readdirSync(SRC), function(file) {

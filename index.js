@@ -3,11 +3,11 @@ var path = require('path')
 var mkdirp = require('mkdirp')
 var _ = require('lodash')
 
-var generateFonts = require('./generateFonts')
-var renderCss = require('./renderCss')
-var renderHtml = require('./renderHtml')
+var generateFonts = require('./lib/generateFonts')
+var renderCss = require('./lib/renderCss')
+var renderHtml = require('./lib/renderHtml')
 
-var TEMPLATES_DIR = path.join(__dirname, '..', 'templates')
+var TEMPLATES_DIR = path.join(__dirname, 'templates')
 var TEMPLATES = {
 	css: path.join(TEMPLATES_DIR, 'css.hbs'),
 	scss: path.join(TEMPLATES_DIR, 'scss.hbs'),
@@ -66,9 +66,10 @@ var webfont = function(options, done) {
 	// Warn about using deprecated template options.
 	for(var key in options.templateOptions) {
 		var value = options.templateOptions[key];
-		if(key === "baseClass") {
-			console.warn("[webfont-generator] Using deprecated templateOptions 'baseClass'. Use 'baseSelector' instead.");
-			options.templateOptions.baseSelector = "." + value;
+		if(key === 'baseClass') {
+			console.warn('[webfont-generator] Using deprecated templateOptions \'baseClass\'. ' +
+        'Use \'baseSelector\' instead.');
+			options.templateOptions.baseSelector = '.' + value;
 			delete options.templateOptions.baseClass;
 			break;
 		}

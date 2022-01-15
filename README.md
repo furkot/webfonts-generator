@@ -1,7 +1,7 @@
+
+This is a clone of [sunflowerdeath/webfonts-generator] project.
+
 # webfonts-generator
-
-
-[![Build Status](https://travis-ci.org/darthsoup/webfonts-generator.svg?branch=master)](https://travis-ci.org/darthsoup/webfonts-generator) [![Greenkeeper badge](https://badges.greenkeeper.io/darthsoup/webfonts-generator.svg)](https://greenkeeper.io/)
 
 Generator of webfonts from SVG icons.
 
@@ -276,3 +276,5 @@ webfontsGenerator({
 ## License
 
 Public domain, see the `LICENCE` file.
+
+[sunflowerdeath/webfonts-generator]: https://github.com/sunflowerdeath/webfonts-generator

@@ -3,11 +3,10 @@ var path = require('path')
 var _ = require('lodash')
 var assert = require('assert')
 
-var Q = require('q')
 var readChunk = require('read-chunk')
 var getFileType = require('file-type')
 
-var webfontsGenerator = require('../src/index')
+var webfontsGenerator = require('..')
 
 describe('webfont', function() {
 	var SRC = path.join(__dirname, 'src')
