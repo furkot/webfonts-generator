@@ -1,6 +1,6 @@
 {
-  "name": "@darthsoup/webfonts-generator",
-  "version": "0.5.3",
+  "name": "@furkot/webfonts-generator",
+  "version": "0.0.0",
   "description": "Generator of webfonts from svg icons",
   "main": "src/index.js",
   "directories": {
@@ -9,10 +9,7 @@
   "scripts": {
     "test": "mocha tests"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/darthsoup/webfonts-generator.git"
-  },
+  "repository": "furkot/webfonts-generator",
   "keywords": [
     "font",
     "webfont",
@@ -23,9 +20,6 @@
   ],
   "author": "sunflowerdeath",
   "license": "Unlicense",
-  "bugs": {
-    "url": "https://github.com/darthsoup/webfonts-generator/issues"
-  },
   "dependencies": {
     "handlebars": "^4.1.2",
     "lodash": "^4.17.20",
