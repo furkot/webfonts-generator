@@ -1,3 +1,11 @@
+
+1.0.0 / 2022-01-16
+==================
+
+ * rewrite in modern javascript
+ * remove `baseClass` option warning
+ * remove support for generating EOT
+
 0.4.0
 
 * Add woff2 support.

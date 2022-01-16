@@ -1,6 +1,6 @@
 {
   "name": "@furkot/webfonts-generator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generator of webfonts from svg icons",
   "scripts": {
     "test": "make check"
