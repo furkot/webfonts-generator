@@ -1,3 +1,6 @@
+[![NPM version][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][deps-image]][deps-url]
 
 This is a clone of [sunflowerdeath/webfonts-generator] project.
 
@@ -276,3 +279,12 @@ webfontsGenerator({
 Public domain, see the `LICENCE` file.
 
 [sunflowerdeath/webfonts-generator]: https://github.com/sunflowerdeath/webfonts-generator
+
+[npm-image]: https://img.shields.io/npm/v/@furkot/webfonts-generator.svg
+[npm-url]: https://npmjs.org/package/@furkot/webfonts-generator
+
+[build-url]: https://github.com/furkot/webfonts-generator/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/workflow/status/furkot/webfonts-generator/check
+
+[deps-image]: https://img.shields.io/librariesio/release/npm/@furkot/webfonts-generator
+[deps-url]: https://libraries.io/npm/@furkot%2Fwebfonts-generator
