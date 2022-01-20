@@ -22,8 +22,7 @@
     "svg2ttf": "^6.0.3",
     "svgicons2svgfont": "^10.0.5",
     "ttf2woff": "^3.0.0",
-    "ttf2woff2": "^4.0.4",
-    "url-join": "^4.0.1"
+    "wawoff2": "^2.0.0"
   },
   "devDependencies": {
     "file-type": "~12",
