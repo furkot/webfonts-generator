@@ -1,4 +1,10 @@
 
+1.0.1 / 2022-01-20
+==================
+
+ * remove url-join dependency
+ * replace ttf2woff2 with wawoff2
+
 1.0.0 / 2022-01-16
 ==================
 
