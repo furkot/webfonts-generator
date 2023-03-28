@@ -1,4 +1,10 @@
 
+1.0.2 / 2023-03-28
+==================
+
+ * upgrade svgicons2svgfont to 12.0.0
+ * use node test runner instead of mocha
+
 1.0.1 / 2022-01-20
 ==================
 
