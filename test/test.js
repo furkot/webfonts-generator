@@ -1,3 +1,9 @@
+const {
+  afterEach,
+  describe,
+  it
+} = require('node:test');
+
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');

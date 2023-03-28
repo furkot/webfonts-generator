@@ -16,6 +16,5 @@
 
   "laxbreak": true,
 
-  "node": true,
-  "mocha": true
+  "node": true
 }

@@ -9,7 +9,7 @@ lint: | node_modules
 	$(NODE_BIN)/jshint index.js lib test
 
 test: | node_modules
-	$(NODE_BIN)/mocha --reporter spec test/test.js
+	node --test --test-reporter spec test/test.js
 
 test-manual: | node_modules
 	node test/manual
