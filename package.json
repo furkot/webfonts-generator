@@ -27,7 +27,6 @@
   "devDependencies": {
     "file-type": "~12",
     "jshint": "~2",
-    "mocha": "~9",
     "read-chunk": "~3"
   },
   "files": [
