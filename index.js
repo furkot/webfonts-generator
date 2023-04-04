@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('node:fs/promises');
 const path = require('path');
 const _ = require('lodash');
 
@@ -39,7 +39,7 @@ const DEFAULT_OPTIONS = {
   normalize: true,
 };
 
-function webfont(options, done) {
+async function webfont(options) {
   if (options.cssFontsPath) {
     console.log(
       'Option "cssFontsPath" is deprecated. Use "cssFontsUrl" instead.'
@@ -50,11 +50,11 @@ function webfont(options, done) {
   options = _.extend({}, DEFAULT_OPTIONS, options);
 
   if (options.dest === undefined)
-    return done(new Error('"options.dest" is undefined.'));
+    throw new Error('"options.dest" is undefined.');
   if (options.files === undefined)
-    return done(new Error('"options.files" is undefined.'));
+    throw new Error('"options.files" is undefined.');
   if (!options.files.length)
-    return done(new Error('"options.files" is empty.'));
+    throw new Error('"options.files" is empty.');
 
   // We modify codepoints later, so we can't use same object from default options.
   if (options.codepoints === undefined) options.codepoints = {};
@@ -91,34 +91,40 @@ function webfont(options, done) {
     }
   });
 
-  // TODO output
-  generateFonts(options)
-    .then(result => {
-      if (options.writeFiles) writeResult(result, options);
-
-      result.generateCss = urls => renderCss(options, urls);
-      done(null, result);
-    })
-    .catch(done);
+  const result = await generateFonts(options);
+  if (options.writeFiles) {
+    await writeResult(result, options);
+  }
+  result.generateCss = urls => renderCss(options, urls);
+  return result;
 }
 
-function writeFile(content, dest) {
-  fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.writeFileSync(dest, content);
+async function writeFile(content, dest) {
+  await fs.mkdir(path.dirname(dest), { recursive: true });
+  await fs.writeFile(dest, content);
 }
 
-function writeResult(fonts, options) {
-  _.each(fonts, (content, type) => {
+async function writeResult(fonts, options) {
+  const writes = _.map(fonts, (content, type) => {
     const filepath = path.join(options.dest, `${options.fontName}.${type}`);
-    writeFile(content, filepath);
+    return writeFile(content, filepath);
   });
   if (options.css) {
-    const css = renderCss(options);
-    writeFile(css, options.cssDest);
+    writes.push(writeCss());
   }
   if (options.html) {
-    const html = renderHtml(options);
-    writeFile(html, options.htmlDest);
+    writes.push(writeHtml());
+  }
+  return Promise.all(writes);
+
+  async function writeCss() {
+    const css = await renderCss(options);
+    return writeFile(css, options.cssDest);
+  }
+
+  async function writeHtml() {
+    const html = await renderHtml(options);
+    return writeFile(html, options.htmlDest);
   }
 }
 

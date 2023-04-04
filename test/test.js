@@ -4,7 +4,7 @@ const {
   it
 } = require('node:test');
 
-const fs = require('fs');
+const fs = require('node:fs');
 const path = require('path');
 const _ = require('lodash');
 const assert = require('assert');
@@ -32,78 +32,67 @@ describe('webfont', () => {
     types: TYPES,
   };
 
-  afterEach(done => fs.rm(DEST, { recursive: true, force: true }, () => done()));
+  afterEach(async () => await fs.promises.rm(DEST, { recursive: true, force: true }));
 
-  it('generates all fonts and css files', done => {
-    webfontsGenerator(OPTIONS, err => {
-      if (err) return done(err);
+  it('generates all fonts and css files', async () => {
+    await webfontsGenerator(OPTIONS);
 
-      const destFiles = fs.readdirSync(DEST);
-      for (const type of TYPES) {
-        const filename = `${FONT_NAME}.${type}`;
-        const filepath = path.join(DEST, filename);
-        assert(destFiles.includes(filename), `${type} file exists`);
-        assert(fs.statSync(filepath).size > 0, `${type} file is not empty`);
+    const destFiles = fs.readdirSync(DEST);
+    for (const type of TYPES) {
+      const filename = `${FONT_NAME}.${type}`;
+      const filepath = path.join(DEST, filename);
+      assert(destFiles.includes(filename), `${type} file exists`);
+      assert(fs.statSync(filepath).size > 0, `${type} file is not empty`);
 
-        const DETECTABLE = ['ttf', 'woff', 'woff2'];
-        if (_.includes(DETECTABLE, type)) {
-          const chunk = readChunk.sync(filepath, 0, 262);
-          const filetype = getFileType(chunk);
-          assert.equal(
-            type,
-            filetype && filetype.ext,
-            'ttf filetype is correct'
-          );
-        }
+      const DETECTABLE = ['ttf', 'woff', 'woff2'];
+      if (_.includes(DETECTABLE, type)) {
+        const chunk = readChunk.sync(filepath, 0, 262);
+        const filetype = getFileType(chunk);
+        assert.equal(
+          type,
+          filetype && filetype.ext,
+          'ttf filetype is correct'
+        );
       }
+    }
 
-      const cssFile = path.join(DEST, `${FONT_NAME}.css`);
-      assert(fs.existsSync(cssFile), 'CSS file exists');
-      assert(fs.statSync(cssFile).size > 0, 'CSS file is not empty');
+    const cssFile = path.join(DEST, `${FONT_NAME}.css`);
+    assert(fs.existsSync(cssFile), 'CSS file exists');
+    assert(fs.statSync(cssFile).size > 0, 'CSS file is not empty');
 
-      const htmlFile = path.join(DEST, `${FONT_NAME}.html`);
-      assert(!fs.existsSync(htmlFile), 'HTML file does not exists by default');
+    const htmlFile = path.join(DEST, `${FONT_NAME}.html`);
+    assert(!fs.existsSync(htmlFile), 'HTML file does not exists by default');
 
-      done(null);
-    });
   });
 
-  it('returns object with fonts and function generateCss()', () => {
-    webfontsGenerator(OPTIONS, (err, result) => {
-      assert(result.svg);
-      assert(result.ttf);
+  it('returns object with fonts and function generateCss()', async () => {
+    const result = await webfontsGenerator(OPTIONS);
+    assert(result.svg);
+    assert(result.ttf);
 
-      assert.equal(typeof result.generateCss, 'function');
-      const css = result.generateCss();
-      assert.equal(typeof css, 'string');
-    });
+    assert.equal(typeof result.generateCss, 'function');
+    const css = await result.generateCss();
+    assert.equal(typeof css, 'string');
   });
 
-  it('function generateCss can change urls', () => {
-    webfontsGenerator(OPTIONS, (err, result) => {
-      const urls = { svg: 'AAA', ttf: 'BBB', woff: 'CCC' };
-      const css = result.generateCss(urls);
-      assert(css.includes('AAA'));
-    });
+  it('function generateCss can change urls', async () => {
+    const urls = { svg: 'AAA', ttf: 'BBB', woff: 'CCC' };
+    const result = await webfontsGenerator(OPTIONS);
+    const css = await result.generateCss(urls);
+    assert(css.includes('AAA'));
   });
 
-  it('gives error when "dest" is undefined', done => {
+  it('gives error when "dest" is undefined', async () => {
     const options = _.extend({}, OPTIONS, { dest: undefined });
-    webfontsGenerator(options, err => {
-      assert(err !== undefined);
-      done();
-    });
+    await assert.rejects(webfontsGenerator(options));
   });
 
-  it('gives error when "files" is undefined', done => {
+  it('gives error when "files" is undefined', async () => {
     const options = _.extend({}, OPTIONS, { files: undefined });
-    webfontsGenerator(options, err => {
-      assert(err !== undefined);
-      done();
-    });
+    await assert.rejects(webfontsGenerator(options));
   });
 
-  it('uses codepoints and startCodepoint', done => {
+  it('uses codepoints and startCodepoint', async () => {
     const START_CODEPOINT = 0x40;
     const CODEPOINTS = {
       close: 0xff,
@@ -112,33 +101,25 @@ describe('webfont', () => {
       codepoints: CODEPOINTS,
       startCodepoint: START_CODEPOINT,
     });
-    webfontsGenerator(options, err => {
-      if (err) return done(err);
+    await webfontsGenerator(options);
 
-      const svg = fs.readFileSync(path.join(DEST, `${FONT_NAME}.svg`), 'utf8');
+    const svg = await fs.promises.readFile(path.join(DEST, `${FONT_NAME}.svg`), 'utf8');
 
-      function codepointInSvg(cp) {
-        return svg.includes(cp.toString(16).toUpperCase());
-      }
+    function codepointInSvg(cp) {
+      return svg.includes(cp.toString(16).toUpperCase());
+    }
 
-      assert(codepointInSvg(START_CODEPOINT), 'startCodepoint used');
-      assert(codepointInSvg(START_CODEPOINT + 1), 'startCodepoint incremented');
-      assert(codepointInSvg(CODEPOINTS.close), 'codepoints used');
-
-      done();
-    });
+    assert(codepointInSvg(START_CODEPOINT), 'startCodepoint used');
+    assert(codepointInSvg(START_CODEPOINT + 1), 'startCodepoint incremented');
+    assert(codepointInSvg(CODEPOINTS.close), 'codepoints used');
   });
 
-  it('generates html file when options.html is true', done => {
+  it('generates html file when options.html is true', async () => {
     const options = _.extend({}, OPTIONS, { html: true });
-    webfontsGenerator(options, err => {
-      if (err) return done(err);
+    await webfontsGenerator(options);
 
-      const htmlFile = path.join(DEST, `${FONT_NAME}.html`);
-      assert(fs.existsSync(htmlFile), 'HTML file exists');
-      assert(fs.statSync(htmlFile).size > 0, 'HTML file is not empty');
-
-      done(null);
-    });
+    const htmlFile = path.join(DEST, `${FONT_NAME}.html`);
+    assert(fs.existsSync(htmlFile), 'HTML file exists');
+    assert(fs.statSync(htmlFile).size > 0, 'HTML file is not empty');
   });
 });

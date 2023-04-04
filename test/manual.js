@@ -13,7 +13,6 @@ const OPTIONS = {
   html: true,
 };
 
-webfontsGenerator(OPTIONS, error => {
-  if (error) console.log('Fail!', error);
-  else console.log('Done!');
-});
+webfontsGenerator(OPTIONS)
+  .then(() => console.log('Done!'))
+  .catch(error => console.log('Fail!', error));

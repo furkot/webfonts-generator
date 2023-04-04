@@ -26,32 +26,22 @@ yarn add --dev webfonts-generator
 ```js
 const webfontsGenerator = require('webfonts-generator');
 
-webfontsGenerator({
+await webfontsGenerator({
   files: [
     'src/dropdown.svg',
     'src/close.svg',
   ],
   dest: 'dest/',
-}, function(error) {
-  if (error) {
-    console.log('Fail!', error);
-  } else {
-    console.log('Done!');
-  }
 })
 ```
 
-## webfontsGenerator(options, done)
+## webfontsGenerator(options)
 
 ### options
 
 Type: `object`
 
 Object with options. See the list of options.
-
-### done
-
-Type: `function(error, result)`
 
 ## List of options
 
@@ -241,7 +231,7 @@ format and matching generator:
 - `woff` - [ttf2woff](https://github.com/fontello/ttf2woff).
 
 ```js
-webfontsGenerator({
+const result = await webfontsGenerator({
   // options
   formatOptions: {
   	// options to pass specifically to the ttf generator
@@ -249,7 +239,7 @@ webfontsGenerator({
   		ts: 1451512800000
   	}
   }
-}, function(error, result) {})
+})
 ```
 
 ### writeFiles
@@ -265,13 +255,12 @@ Also results object will have function `generateCss([urls])`
 where `urls` is an object with future fonts urls.
 
 ```js
-webfontsGenerator({
+const result = await webfontsGenerator({
   // options
   writeFiles: false
-}, function(error, result) {
-  // result.woff, result.ttf, etc - generated fonts
-  // result.generateCss(urls) - function to generate css
-})
+});
+// result.woff, result.ttf, etc - generated fonts
+// result.generateCss(urls) - function to generate css
 ```
 
 ## License
