@@ -1,4 +1,9 @@
 
+2.0.1 / 2024-04-11
+==================
+
+ * Bugfix : missing 'await' in the rendering of the html template
+
 2.0.0 / 2023-04-04
 ==================
 
