@@ -25,8 +25,8 @@
     "wawoff2": "^2.0.0"
   },
   "devDependencies": {
-    "file-type": "~19",
-    "jshint": "~2"
+    "@pirxpilot/jshint": "~3",
+    "file-type": "~19"
   },
   "files": [
     "index.js",
