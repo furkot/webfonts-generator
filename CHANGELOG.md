@@ -1,4 +1,10 @@
 
+2.0.2 / 2024-04-11
+==================
+
+ * replace jshint with @pirxpilot/jshint
+ * upgrade file-type to ~19
+
 2.0.1 / 2024-04-11
 ==================
 
