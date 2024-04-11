@@ -9,12 +9,9 @@ const path = require('path');
 const _ = require('lodash');
 const assert = require('assert');
 
-const readChunk = require('read-chunk');
-const getFileType = require('file-type');
-
 const webfontsGenerator = require('..');
 
-describe('webfont', () => {
+describe('webfont', async () => {
   const SRC = path.join(__dirname, 'src');
   const DEST = path.join(__dirname, 'dest');
 
@@ -31,6 +28,7 @@ describe('webfont', () => {
     fontName: FONT_NAME,
     types: TYPES,
   };
+  const { fileTypeFromFile } = await import('file-type');
 
   afterEach(async () => await fs.promises.rm(DEST, { recursive: true, force: true }));
 
@@ -46,8 +44,7 @@ describe('webfont', () => {
 
       const DETECTABLE = ['ttf', 'woff', 'woff2'];
       if (_.includes(DETECTABLE, type)) {
-        const chunk = readChunk.sync(filepath, 0, 262);
-        const filetype = getFileType(chunk);
+        const filetype = await fileTypeFromFile(filepath);
         assert.equal(
           type,
           filetype && filetype.ext,
