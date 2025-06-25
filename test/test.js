@@ -1,13 +1,9 @@
-const {
-  afterEach,
-  describe,
-  it
-} = require('node:test');
+const { afterEach, describe, it } = require('node:test');
 
 const fs = require('node:fs');
-const path = require('path');
+const path = require('node:path');
 const _ = require('lodash');
-const assert = require('assert');
+const assert = require('node:assert');
 
 const webfontsGenerator = require('..');
 
@@ -26,7 +22,7 @@ describe('webfont', async () => {
     dest: DEST,
     files: FILES,
     fontName: FONT_NAME,
-    types: TYPES,
+    types: TYPES
   };
   const { fileTypeFromFile } = await import('file-type');
 
@@ -45,11 +41,7 @@ describe('webfont', async () => {
       const DETECTABLE = ['ttf', 'woff', 'woff2'];
       if (_.includes(DETECTABLE, type)) {
         const filetype = await fileTypeFromFile(filepath);
-        assert.equal(
-          type,
-          filetype && filetype.ext,
-          'ttf filetype is correct'
-        );
+        assert.equal(type, filetype?.ext, 'ttf filetype is correct');
       }
     }
 
@@ -59,7 +51,6 @@ describe('webfont', async () => {
 
     const htmlFile = path.join(DEST, `${FONT_NAME}.html`);
     assert(!fs.existsSync(htmlFile), 'HTML file does not exists by default');
-
   });
 
   it('returns object with fonts and function generateCss()', async () => {
@@ -92,11 +83,11 @@ describe('webfont', async () => {
   it('uses codepoints and startCodepoint', async () => {
     const START_CODEPOINT = 0x40;
     const CODEPOINTS = {
-      close: 0xff,
+      close: 0xff
     };
     const options = _.extend({}, OPTIONS, {
       codepoints: CODEPOINTS,
-      startCodepoint: START_CODEPOINT,
+      startCodepoint: START_CODEPOINT
     });
     await webfontsGenerator(options);
 

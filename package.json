@@ -25,7 +25,7 @@
     "wawoff2": "^2.0.0"
   },
   "devDependencies": {
-    "@pirxpilot/jshint": "~3",
+    "@biomejs/biome": "2.0.5",
     "file-type": "~19"
   },
   "files": [

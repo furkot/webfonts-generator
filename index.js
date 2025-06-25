@@ -1,5 +1,5 @@
 const fs = require('node:fs/promises');
-const path = require('path');
+const path = require('node:path');
 const _ = require('lodash');
 
 const generateFonts = require('./lib/generateFonts');
@@ -10,12 +10,12 @@ const TEMPLATES_DIR = path.join(__dirname, 'templates');
 const TEMPLATES = {
   css: path.join(TEMPLATES_DIR, 'css.hbs'),
   scss: path.join(TEMPLATES_DIR, 'scss.hbs'),
-  html: path.join(TEMPLATES_DIR, 'html.hbs'),
+  html: path.join(TEMPLATES_DIR, 'html.hbs')
 };
 
 const DEFAULT_TEMPLATE_OPTIONS = {
   baseSelector: '.icon',
-  classPrefix: 'icon-',
+  classPrefix: 'icon-'
 };
 
 const DEFAULT_OPTIONS = {
@@ -36,25 +36,20 @@ const DEFAULT_OPTIONS = {
    * http://en.wikipedia.org/wiki/Private_Use_(Unicode)
    */
   startCodepoint: 0xf101,
-  normalize: true,
+  normalize: true
 };
 
 async function webfont(options) {
   if (options.cssFontsPath) {
-    console.log(
-      'Option "cssFontsPath" is deprecated. Use "cssFontsUrl" instead.'
-    );
+    console.log('Option "cssFontsPath" is deprecated. Use "cssFontsUrl" instead.');
     options.cssFontsUrl = options.cssFontsPath;
   }
 
   options = _.extend({}, DEFAULT_OPTIONS, options);
 
-  if (options.dest === undefined)
-    throw new Error('"options.dest" is undefined.');
-  if (options.files === undefined)
-    throw new Error('"options.files" is undefined.');
-  if (!options.files.length)
-    throw new Error('"options.files" is empty.');
+  if (options.dest === undefined) throw new Error('"options.dest" is undefined.');
+  if (options.files === undefined) throw new Error('"options.files" is undefined.');
+  if (!options.files.length) throw new Error('"options.files" is empty.');
 
   // We modify codepoints later, so we can't use same object from default options.
   if (options.codepoints === undefined) options.codepoints = {};
@@ -67,11 +62,7 @@ async function webfont(options) {
     options.htmlDest = path.join(options.dest, `${options.fontName}.html`);
   }
 
-  options.templateOptions = _.extend(
-    {},
-    DEFAULT_TEMPLATE_OPTIONS,
-    options.templateOptions
-  );
+  options.templateOptions = _.extend({}, DEFAULT_TEMPLATE_OPTIONS, options.templateOptions);
 
   // Generates codepoints starting from `options.startCodepoint`,
   // skipping codepoints explicitly specified in `options.codepoints`
