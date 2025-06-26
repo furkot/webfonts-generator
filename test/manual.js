@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const webfontsGenerator = require('..');
 
@@ -10,7 +10,7 @@ const OPTIONS = {
   files: FILES,
   fontName: 'fontName',
   types: ['svg', 'ttf', 'woff', 'woff2'],
-  html: true,
+  html: true
 };
 
 webfontsGenerator(OPTIONS)
