@@ -1,4 +1,11 @@
 
+2.0.3 / 2025-06-25
+==================
+
+ * upgrade `svgicons2svgfont` to ~15
+ * upgrade `file-type` to 21.0.0
+ * use `biome` as a linter and formatter
+
 2.0.2 / 2024-04-11
 ==================
 
