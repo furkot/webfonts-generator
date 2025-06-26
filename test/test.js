@@ -5,6 +5,8 @@ const path = require('node:path');
 const _ = require('lodash');
 const assert = require('node:assert');
 
+const { fileTypeFromFile } = require('file-type');
+
 const webfontsGenerator = require('..');
 
 describe('webfont', async () => {
@@ -24,7 +26,6 @@ describe('webfont', async () => {
     fontName: FONT_NAME,
     types: TYPES
   };
-  const { fileTypeFromFile } = await import('file-type');
 
   afterEach(async () => await fs.promises.rm(DEST, { recursive: true, force: true }));
 
